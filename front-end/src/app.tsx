@@ -4,6 +4,10 @@ import { useState } from 'react'
 export function App() {
   const [isGuestsInputOpen, setIsGuestsInputOpen] = useState(false)
 
+  function closeGuestInput(){
+    setIsGuestsInputOpen(false)
+  }
+
   function openGuestInput(){
     console.log('Botão clicado!');
     setIsGuestsInputOpen(true)
@@ -33,7 +37,7 @@ export function App() {
             <div className='w-px h-6 bg-zinc-800'></div>
 
             {isGuestsInputOpen ? (
-              <p><button className='bg-zinc-800 text-zinc-200 rounded-lg px-5 py-2 font-medium flex items-center gap-2 hover:bg-zinc-700'>
+              <p><button onClick={closeGuestInput} className='bg-zinc-800 text-zinc-200 rounded-lg px-5 py-2 font-medium flex items-center gap-2 hover:bg-zinc-700'>
                 Alterar local/data
                 <Settings2 className='size-5' />
               </button></p>
