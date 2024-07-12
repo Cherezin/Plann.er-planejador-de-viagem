@@ -10,12 +10,6 @@ interface InviteGuestsModalProps {
 }
 
 export function InviteGuestsModal(props: InviteGuestsModalProps){
-    props.addNewEmailToInvite
-    props.removeEmailFromInvites
-    props.emailsToInvite
-    props.modalRef
-    
-
     return(
         <div className='fixed inset-0 bg-black/60 flex items-center justify-center'>
           <div ref={props.modalRef} className='w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5'>
