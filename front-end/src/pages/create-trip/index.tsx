@@ -104,7 +104,7 @@ export function CreateTripPage() {
 
           {isGuestsInputOpen && (
             <WhoWillBeOnTheTrip
-            openGuestsMoldal={openGuestsMoldal}
+              openGuestsMoldal={openGuestsMoldal}
               openConfirmTripModal={openConfirmTripModal}
               emailsToInvite={emailsToInvite}
              />
