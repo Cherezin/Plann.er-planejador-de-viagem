@@ -1,6 +1,7 @@
 import { AtSign, Plus, X } from "lucide-react"
 import { FormEvent, RefObject } from "react"
 import { Button } from "../../components/button"
+import { Modal } from "../../components/modal"
 
 interface InviteGuestsModalProps {
     emailsToInvite: string[]
@@ -14,7 +15,7 @@ export function InviteGuestsModal(props: InviteGuestsModalProps){
 
     return(
         <div className='fixed inset-0 bg-black/60 flex items-center justify-center'>
-          <div ref={props.modalRef} className='w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5'>
+          <Modal ref={props.modalRef}>
             
             {/* Cabeçalho do Modal */}
             <div className='space-y-2'>
@@ -59,7 +60,7 @@ export function InviteGuestsModal(props: InviteGuestsModalProps){
                 <Plus className='size-5'/>
               </Button>
             </form>
-          </div>
+          </Modal>
         </div>
     )
 }
