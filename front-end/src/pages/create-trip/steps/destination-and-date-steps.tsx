@@ -9,13 +9,16 @@ interface DestinationAndDateStepProps{
     isGuestsInputOpen: boolean
     closeGuestInput: () => void
     openGuestInput: () => void
+    setDestination: (destination: string) => void
+    eventStartAndEndDate: DateRange | undefined
+    setEventStartAndEndDate: (date: DateRange | undefined) => void
 }
 
 
  
 export function DestinationAndDateStep(props: DestinationAndDateStepProps){
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false)
-    const [eventStartAndEndDate, setEventStartAndEndDate] = useState<DateRange | undefined>()
+    
 
     function openDatePicker(){
         return setIsDatePickerOpen(true)
@@ -25,8 +28,8 @@ export function DestinationAndDateStep(props: DestinationAndDateStepProps){
         return setIsDatePickerOpen(false)
     }
     
-    const displayedDate = eventStartAndEndDate && eventStartAndEndDate.from && eventStartAndEndDate.to
-    ? format(eventStartAndEndDate.from, "d' de 'LLL").concat(' até ').concat(format(eventStartAndEndDate.to, "d' de 'LLL"))
+    const displayedDate = props.eventStartAndEndDate && props.eventStartAndEndDate.from && props.eventStartAndEndDate.to
+    ? format(props.eventStartAndEndDate.from, "d' de 'LLL").concat(' até ').concat(format(props.eventStartAndEndDate.to, "d' de 'LLL"))
      : null
 
     return(
@@ -34,10 +37,16 @@ export function DestinationAndDateStep(props: DestinationAndDateStepProps){
             
             <div className='flex items-center gap-2 flex-1'>
                 <MapPin className='size-5 text-zinc-400'/>
-                <input disabled={props.isGuestsInputOpen} type="text" placeholder="Para onde você vai?" className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"/>
+                <input 
+                disabled={props.isGuestsInputOpen} 
+                type="text" 
+                placeholder="Para onde você vai?" 
+                className="bg-transparent text-lg placeholder-zinc-400 outline-none"
+                onChange={e => props.setDestination(e.target.value)}
+                />
             </div>
                 
-            <button onClick={openDatePicker} disabled={props.isGuestsInputOpen} className='flex items-center gap-2 text-left w-{240px}'> 
+            <button onClick={openDatePicker} disabled={props.isGuestsInputOpen} className='flex items-center gap-2 text-left w-{240px} flex-1'> 
                 <Calendar className='size-5 text-zinc-400'/>
  
                 <span className="text-lg text-zinc-400 flex-1">
@@ -57,7 +66,7 @@ export function DestinationAndDateStep(props: DestinationAndDateStepProps){
                             </div>
                         </div>  
                           
-                        <DayPicker mode="range" selected={eventStartAndEndDate}  onSelect={setEventStartAndEndDate}/>
+                        <DayPicker mode="range" selected={props.eventStartAndEndDate}  onSelect={props.setEventStartAndEndDate}/>
                         
                     </div>
                 </div>   
