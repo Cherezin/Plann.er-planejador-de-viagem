@@ -62,6 +62,7 @@ export function TripDetailsPage(){
                 {isCreateActivityModalOpen &&(
                     <CreateActivityModal
                         modalRef={modalRef}
+                        closeGuestModalRegister={closeGuestModalRegister}
                      />
                 )}
 
