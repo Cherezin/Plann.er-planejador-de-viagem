@@ -6,6 +6,8 @@ import { Modal } from "../../components/modal";
 interface ConfirmTripModalProps{
     modalRef:  RefObject<HTMLDivElement>;
     createTrip: (e: FormEvent<HTMLFormElement>) => void
+    setOwnerEmail: (email: string) => void
+    setOwnerName: (name: string) => void
 }
 
 export function ConfirmTripModal(props: ConfirmTripModalProps){
@@ -30,7 +32,9 @@ export function ConfirmTripModal(props: ConfirmTripModalProps){
             <input 
             name='nome' 
             placeholder="Seu nome completo" 
-            className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"/>
+            className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
+            onChange={e => props.setOwnerName(e.target.value)}
+            />
           </div>
 
           <div className='h-14 px-4 bg-zinc-950 border-zinc-800 rounded-lg flex items-center gap-2'>
@@ -39,7 +43,9 @@ export function ConfirmTripModal(props: ConfirmTripModalProps){
             type='email'
             name='email' 
             placeholder="Seu e-mail pessoal" 
-            className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"/>
+            className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
+            onChange={e => props.setOwnerEmail(e.target.value)}
+            />
           </div>
 
           <Button size="full" type="submit">
